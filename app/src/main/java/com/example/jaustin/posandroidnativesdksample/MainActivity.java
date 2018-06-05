@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
 
     private static final int CHARGE_REQUEST_CODE = 1;
     private PosClient mPosClient;
+    private String mSelectedCatalogVariantID = "";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    return POSFragment.newInstance("Charge fragment", position + 1);
+                    return POSFragment.newInstance("Charge fragment", mSelectedCatalogVariantID);
                 case 1:
                     return PlaceholderFragment.newInstance(position + 1);
                 default:

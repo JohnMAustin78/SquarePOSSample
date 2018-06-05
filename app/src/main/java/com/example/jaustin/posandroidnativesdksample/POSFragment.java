@@ -1,8 +1,6 @@
 package com.example.jaustin.posandroidnativesdksample;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,11 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import com.squareup.sdk.pos.ChargeRequest;
-import com.squareup.sdk.pos.CurrencyCode;
-import com.squareup.sdk.pos.PosClient;
-import com.squareup.sdk.pos.PosSdk;
 
 
 /**
@@ -26,21 +19,16 @@ import com.squareup.sdk.pos.PosSdk;
  * create an instance of this fragment.
  */
 public class POSFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_ITEMID = "item id";
     /**
      * The fragment argument representing the section number for this
      * fragment.
      */
-    private static final String ARG_SECTION_NUMBER = "section_number";
-    // TODO: Rename and change types of parameters
+    private static final String ARG_CATALOG_VARIATION_ID = "Catalog_Item_Variation_ID";
     private String mItemId;
-
+    private String mCatalogVariationID;
     private OnFragmentInteractionListener mListener;
-
     private Button mChargeButton;
-
 
     public POSFragment() {
         // Required empty public constructor
@@ -50,15 +38,15 @@ public class POSFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * @param param1             Parameter 1.
+     * @param catalogVariationID
      * @return A new instance of fragment POSFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static POSFragment newInstance(String param1, int sectionNumber) {
+    public static POSFragment newInstance(String param1, String catalogVariationID) {
         POSFragment fragment = new POSFragment();
         Bundle args = new Bundle();
         args.putString(ARG_ITEMID, param1);
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putString(ARG_CATALOG_VARIATION_ID, catalogVariationID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -68,6 +56,7 @@ public class POSFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mItemId = getArguments().getString(ARG_ITEMID);
+            mCatalogVariationID = getArguments().getString(ARG_CATALOG_VARIATION_ID);
         }
     }
 
@@ -81,7 +70,6 @@ public class POSFragment extends Fragment {
         mChargeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mListener.onFragmentInteraction(MainActivity.chargeActions.ADD_CHARGE);
             }
         });
