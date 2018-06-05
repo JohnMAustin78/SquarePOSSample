@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">POSAndroidNativeSDKSample</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Create a charge</string>
+    <string name="applicationId_Square">sq0ids-Qo_SvV3dUe_zBX5NAfiz4w</string>
+</resources>
