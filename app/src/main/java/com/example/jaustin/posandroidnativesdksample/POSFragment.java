@@ -8,7 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.Toast;
+import java.util.concurrent.Callable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,7 +95,9 @@ public class POSFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
-
+    private void liveTemplateTester() {
+      Toast.makeText(getActivity(), "bla", Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onDetach() {
         super.onDetach();

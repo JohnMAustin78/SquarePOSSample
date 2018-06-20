@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,12 +26,12 @@ import com.squareup.sdk.pos.CurrencyCode;
 import com.squareup.sdk.pos.PosClient;
 import com.squareup.sdk.pos.PosSdk;
 
-public class MainActivity extends AppCompatActivity implements POSFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements POSFragment.OnFragmentInteractionListener, catalogPage_Fragment.OnFragmentInteractionListener {
 
 
     public static enum chargeActions {
         ADD_CHARGE,
-        REVERSE_CHARGE;
+        REVERSE_CHARGE
     }
 
     private static final int CHARGE_REQUEST_CODE = 1;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
     public void onFragmentInteraction(chargeActions actionEnum) {
         switch (actionEnum) {
             case ADD_CHARGE:
-                startTransaction();
+                startTransaction2();
                 break;
             case REVERSE_CHARGE:
                 break;
@@ -116,14 +118,14 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
         }
     }
 
-    public void startTransaction() {
+    public void startTransaction2() {
         try {
-            ChargeRequest request = new ChargeRequest
+            ChargeRequest chargeRequest = new ChargeRequest
                     .Builder(
                     100,
                     CurrencyCode.USD)
                     .build();
-            Intent intent = mPosClient.createChargeIntent(request);
+            Intent intent = mPosClient.createChargeIntent(chargeRequest);
             startActivityForResult(intent, CHARGE_REQUEST_CODE);
 
         } catch (ActivityNotFoundException e) {
@@ -177,6 +179,11 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
             alertDialog.show();
 
         }
+
+
+    }
+    @Override public void onFragmentInteraction(Uri uri) {
+
     }
 
 
@@ -198,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements POSFragment.OnFra
                 case 0:
                     return POSFragment.newInstance("Charge fragment", mSelectedCatalogVariantID);
                 case 1:
+                    return catalogPage_Fragment.newInstance("nothing");
+                case 2:
                     return PlaceholderFragment.newInstance(position + 1);
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
