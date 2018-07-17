@@ -6,4 +6,8 @@
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Create a charge</string>
   <string name="applicationId_Square">sq0ids-Qo_SvV3dUe_zBX5NAfiz4w</string>
+  <string name="DefaultCategoryAutoCompleteValue">Item category</string>
+  <string name="item_name">Item name</string>
+  <string name="item_description">Item description</string>
+  <string name="item_abbreviation">Item abbreviation</string>
 </resources>

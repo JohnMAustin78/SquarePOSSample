@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="catalogPage_Fragment"
+    tools:context="com.square.developers.posandroidnativesdksample.catalogPage_Fragment"
     >
 
   <ScrollView
@@ -14,6 +14,7 @@
       android:layout_alignParentTop="true"
       android:layout_marginStart="0dp"
       android:layout_marginTop="3dp"
+      android:id="@+id/scrollview"
       >
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,13 +22,75 @@
         android:orientation="vertical"
         />
   </ScrollView>
+  <View
+      android:id="@+id/divider"
+      android:layout_width="5dp"
+      android:layout_height="match_parent"
+      android:layout_alignParentTop="true"
+      android:layout_marginRight="4dp"
+      android:layout_toEndOf="@+id/scrollview"
+      android:layout_toLeftOf="@+id/imageView"
+      android:background="?android:attr/listDivider"
+      />
   <ImageView
       android:id="@+id/imageView"
       android:layout_width="127dp"
       android:layout_height="115dp"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentTop="true"
-      android:layout_marginEnd="209dp"
+      android:layout_alignParentEnd="false"
+      android:layout_alignParentTop="false"
+      android:layout_marginTop="3dp"
+      android:layout_toRightOf="@+id/divider"
       app:srcCompat="@drawable/item01"
       />
+  <AutoCompleteTextView
+      android:id="@+id/autoCompleteTextView"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="false"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="3dp"
+      android:layout_marginLeft="3dp"
+      android:layout_width="200dp"
+      android:layout_toRightOf="@+id/imageView"
+      android:text="@string/DefaultCategoryAutoCompleteValue"
+      />
+  <EditText
+      android:id="@+id/editName"
+      android:layout_width="199dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/autoCompleteTextView"
+      android:layout_marginTop="3dp"
+      android:layout_toRightOf="@+id/imageView"
+      android:ems="10"
+      android:inputType="textPersonName"
+      android:text="@string/item_name"
+      android:layout_marginLeft="3dp"
+
+      />
+  <EditText
+      android:id="@+id/editAbbreviation"
+      android:layout_width="199dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/editName"
+      android:layout_marginTop="3dp"
+      android:layout_toRightOf="@+id/imageView"
+      android:ems="10"
+      android:inputType="text"
+      android:text="@string/item_abbreviation"
+      android:layout_marginLeft="3dp"
+
+      />
+  <EditText
+      android:id="@+id/editDescription"
+      android:layout_width="199dp"
+      android:layout_height="wrap_content"
+      android:layout_alignStart="@+id/autoCompleteTextView"
+      android:layout_below="@+id/editAbbreviation"
+      android:layout_toRightOf="@+id/imageView"
+      android:ems="10"
+      android:inputType="textCapSentences"
+      android:text="@string/item_description"
+      android:layout_marginTop="3dp"
+
+      />
+
 </RelativeLayout>
